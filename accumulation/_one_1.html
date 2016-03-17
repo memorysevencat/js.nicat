@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var count=0;
+    function myFunc(){
+        count++;
+        alert(count);
+    }
+    var func=throttle(myFunc,100);
+    window.onresize=function(){
+        func();
+    }
+    function throttle(fn,delay){
+        var  timer=null;
+        return function () {
+            var context=this,args=arguments;
+            clearTimeout(timer);
+            timer=setTimeout(function(){
+                fn.apply(context,args);
+            },delay);
+        }
+    }
+</script>
+</body>
+</html>
