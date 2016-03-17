@@ -1,0 +1,22 @@
+<html>
+<head></head>
+<body></body>
+<script type="text/javascript">
+    var count = 0;
+    function myFunc() {
+        count++;
+        alert(count);
+    }
+    window.onresize = function () {
+        throttleFunc(myFunc);
+    }
+    function throttleFunc(method, context) {
+        clearTimeout(method.tld);
+        method.tld = setTimeout(function () {
+            method.tld = setTimeout(function () {
+                method.call(context);
+            })
+        }, 100);
+    }
+</script>
+</html>
